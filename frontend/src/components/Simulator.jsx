@@ -25,7 +25,7 @@ export default function Simulator({ db }) {
             maxLevel: 2,
             levels: [
                 { name: "Unoptimized Join" },              // SELECT * with implicit join
-                { name: "Optimized Join" },                // Explicit join + selective cols
+                { name: "Join with Projection" },          // Explicit join + selective cols
                 { name: "Indexing on Join Keys" },         // CREATE INDEX on dept_id
             ],
         },
@@ -53,11 +53,11 @@ export default function Simulator({ db }) {
     };
 
     const queryOptions = [
-        {name: "Simple SELECT", value: "select"},
-        {name: "JOIN Query", value: "join"},
-        {name: "FILTER Query", value: "filter"},
-        {name: "SORT Query", value: "sort"},
-        {name: "AGGREGATION Query", value: "aggregation"},
+        { name: "Simple SELECT", value: "select" },
+        { name: "JOIN Query", value: "join" },
+        { name: "FILTER Query", value: "filter" },
+        { name: "SORT Query", value: "sort" },
+        { name: "AGGREGATION Query", value: "aggregation" },
     ]
 
 
@@ -79,6 +79,7 @@ export default function Simulator({ db }) {
         (async () => {
             let startTime = Date.now(); // ⏱ start timer
             for (let i = 1; i <= n_users; i++) {
+                await sleep(50);
                 await fetch(`http://localhost:3000/exec/${query}-query`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -87,15 +88,14 @@ export default function Simulator({ db }) {
                     console.log(data);
                 });
 
-                let finalTime = ((Date.now() - startTime) / 1000).toFixed(2);
-                console.log("time2 = " + finalTime + "s");
-                let avgLatency = ((finalTime / n_users) * 1000).toFixed(2);
-                let throughput = (n_users / finalTime).toFixed(2);
+                let finalTime = (Date.now() - startTime) / 1000; // seconds
+                let avgLatency = ((finalTime / i) * 1000).toFixed(2); // ms per request
+                let throughput = (i / finalTime).toFixed(2); // req/sec
 
 
                 setSimulationResults((prev) => {
-                    const newProgress = prev.config1.progress + unit;
-                    const isDone = newProgress >= 100;
+                    const newProgress = Math.min(prev.config1.progress + unit, 100);
+                    const isDone =  i === n_users;
                     return {
                         ...prev,
                         config1: {
@@ -118,6 +118,7 @@ export default function Simulator({ db }) {
         (async () => {
             let startTime = Date.now();
             for (let i = 1; i <= n_users; i++) {
+                await sleep(50);
                 await fetch(`http://localhost:3000/exec/${query}-query`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -126,14 +127,13 @@ export default function Simulator({ db }) {
                     console.log(data);
                 });
 
-                let finalTime = ((Date.now() - startTime) / 1000).toFixed(2);
-                console.log("time2 = " + finalTime + "s");
-                let avgLatency = ((finalTime / n_users) * 1000).toFixed(2);
-                let throughput = (n_users / finalTime).toFixed(2);
+                let finalTime = (Date.now() - startTime) / 1000; // seconds
+                let avgLatency = ((finalTime / i) * 1000).toFixed(2); // ms per request
+                let throughput = (i / finalTime).toFixed(2); // req/sec
 
                 setSimulationResults((prev) => {
-                    const newProgress = prev.config2.progress + unit;
-                    const isDone = newProgress >= 100;
+                    const newProgress = Math.min(prev.config2.progress + unit, 100);
+                    const isDone =  i === n_users;
                     return {
                         ...prev,
                         config2: {

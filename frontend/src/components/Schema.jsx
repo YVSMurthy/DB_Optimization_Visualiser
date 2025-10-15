@@ -48,7 +48,7 @@ export default function Schema({ db }) {
                                             <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">email</td>
                                             <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">VARCHAR(20)</td>
                                             <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UNIQUE NOT NULL</td>
-                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-gray-100 border-1 border-gray-300 rounded-lg">Not Indexed</p></td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
                                         </tr>
                                         <tr>
                                             <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">created_at</td>
