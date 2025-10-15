@@ -9,8 +9,8 @@ export default function Simulator({ db }) {
     const [config2Level, setConfig2Level] = useState(1);
 
     const [simulationResults, setSimulationResults] = useState({
-        config1: { isComplete: false, isRunning: false, progress: 0, avgLatency: 120, throughput: 300 },
-        config2: { isComplete: false, isRunning: false, progress: 0, avgLatency: 95, throughput: 370 },
+        config1: { isComplete: false, isRunning: false, progress: 0, avgLatency: 0, throughput: 0 },
+        config2: { isComplete: false, isRunning: false, progress: 0, avgLatency: 0, throughput: 0 },
     });
 
     const currentQueryConfig = {
@@ -77,9 +77,22 @@ export default function Simulator({ db }) {
 
         // Config 1 simulation
         (async () => {
-            const startTime = Date.now(); // ⏱ start timer
+            let startTime = Date.now(); // ⏱ start timer
             for (let i = 1; i <= n_users; i++) {
-                await sleep(1250);
+                await fetch(`http://localhost:3000/exec/${query}-query`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ optimizationLevel: currentQueryConfig[query].levels[config1Level].name })
+                }).then(res => res.json()).then(data => {
+                    console.log(data);
+                });
+
+                let finalTime = ((Date.now() - startTime) / 1000).toFixed(2);
+                console.log("time2 = " + finalTime + "s");
+                let avgLatency = ((finalTime / n_users) * 1000).toFixed(2);
+                let throughput = (n_users / finalTime).toFixed(2);
+
+
                 setSimulationResults((prev) => {
                     const newProgress = prev.config1.progress + unit;
                     const isDone = newProgress >= 100;
@@ -90,23 +103,34 @@ export default function Simulator({ db }) {
                             progress: newProgress,
                             isComplete: isDone,
                             isRunning: !isDone,
+                            avgLatency: isDone ? avgLatency : prev.config1.avgLatency,
+                            throughput: isDone ? throughput : prev.config1.throughput,
                             timeTaken: isDone
-                                ? ((Date.now() - startTime) / 1000).toFixed(2) // total seconds
+                                ? ((Date.now() - startTime) / 1000).toFixed(2)
                                 : prev.config1.timeTaken,
                         },
                     };
                 });
             }
-
-            const finalTime = ((Date.now() - startTime) / 1000).toFixed(2);
-            console.log("time1 = " + finalTime + "s");
         })();
 
         // Config 2 simulation
         (async () => {
-            const startTime = Date.now(); // ⏱ start timer
+            let startTime = Date.now();
             for (let i = 1; i <= n_users; i++) {
-                await sleep(1000);
+                await fetch(`http://localhost:3000/exec/${query}-query`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ optimizationLevel: currentQueryConfig[query].levels[config2Level].name })
+                }).then(res => res.json()).then(data => {
+                    console.log(data);
+                });
+
+                let finalTime = ((Date.now() - startTime) / 1000).toFixed(2);
+                console.log("time2 = " + finalTime + "s");
+                let avgLatency = ((finalTime / n_users) * 1000).toFixed(2);
+                let throughput = (n_users / finalTime).toFixed(2);
+
                 setSimulationResults((prev) => {
                     const newProgress = prev.config2.progress + unit;
                     const isDone = newProgress >= 100;
@@ -117,15 +141,15 @@ export default function Simulator({ db }) {
                             progress: newProgress,
                             isComplete: isDone,
                             isRunning: !isDone,
+                            avgLatency: isDone ? avgLatency : prev.config1.avgLatency,
+                            throughput: isDone ? throughput : prev.config1.throughput,
                             timeTaken: isDone
                                 ? ((Date.now() - startTime) / 1000).toFixed(2)
-                                : prev.config2.timeTaken,
+                                : prev.config1.timeTaken,
                         },
                     };
                 });
             }
-            const finalTime = ((Date.now() - startTime) / 1000).toFixed(2);
-            console.log("time2 = " + finalTime + "s");
         })();
 
     };

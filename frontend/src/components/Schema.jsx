@@ -66,68 +66,6 @@ export default function Schema({ db }) {
                         <div className="w-full bg-white rounded-lg shadown-lg px-10 py-5 flex flex-col items-center gap-5">
                             {/* Schema details  */}
                             <div className="w-full flex items-center justify-between">
-                                <h3 className="flex items-center gap-2 text-lg font-bold"><Table color="#8f118f" /> orders</h3>
-                                <h4 className="text-sm px-3 py-2 rounded-md border-1 border-gray-200 bg-gray-50">4000 documents</h4>
-                            </div>
-
-                            {/* Schema  */}
-                            <div className="w-7/8 px-10 py-5">
-                                <table className="table-auto border-collapse border-spacing-y-4 w-full">
-                                    <thead>
-                                        <tr>
-                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Columns</th>
-                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Type</th>
-                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Property</th>
-                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Indexed</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">id</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UUID</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">PRIMAY KEY</td>
-                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">user_id</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UUID</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">FOREIGN KEY</td>
-                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">product_id</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UUID</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">FOREIGN KEY</td>
-                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">amount</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">DECIMAL(10, 2)</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">NOT NULL</td>
-                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-gray-100 border-1 border-gray-300 rounded-lg">Not Indexed</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">status</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">VARCHAR(20)</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UNIQUE NOT NULL</td>
-                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">created_at</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">TIMESTAMP</td>
-                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">NOT NULL, DEAFULT(NOW)</td>
-                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </div>
-
-                        {/* Table 3 */}
-                        <div className="w-full bg-white rounded-lg shadown-lg px-10 py-5 flex flex-col items-center gap-5">
-                            {/* Schema details  */}
-                            <div className="w-full flex items-center justify-between">
                                 <h3 className="flex items-center gap-2 text-lg font-bold"><Table color="#8f118f" /> products</h3>
                                 <h4 className="text-sm px-3 py-2 rounded-md border-1 border-gray-200 bg-gray-50">200 documents</h4>
                             </div>
@@ -172,10 +110,110 @@ export default function Schema({ db }) {
                                             <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">created_at</td>
                                             <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">TIMESTAMP</td>
                                             <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">NOT NULL, DEAFULT(NOW)</td>
-                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-gray-100 border-1 border-gray-300 rounded-lg">Not Indexed</p></td>
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+
+                        {/* Table 3 */}
+                        <div className="w-full bg-white rounded-lg shadown-lg px-10 py-5 flex flex-col items-center gap-5">
+                            {/* Schema details  */}
+                            <div className="w-full flex items-center justify-between">
+                                <h3 className="flex items-center gap-2 text-lg font-bold"><Table color="#8f118f" /> orders</h3>
+                                <h4 className="text-sm px-3 py-2 rounded-md border-1 border-gray-200 bg-gray-50">2000 documents</h4>
+                            </div>
+
+                            {/* Schema  */}
+                            <div className="w-7/8 px-10 py-5">
+                                <table className="table-auto border-collapse border-spacing-y-4 w-full">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Columns</th>
+                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Type</th>
+                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Property</th>
+                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Indexed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">id</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UUID</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">PRIMAY KEY</td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">customer_id</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UUID</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">FOREIGN KEY</td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">order_date</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">TIMESTAMP</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">NOT NULL, DEAFULT(NOW)</td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-gray-100 border-1 border-gray-300 rounded-lg">Not Indexed</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                        {/* Table 4 */}
+                        <div className="w-full bg-white rounded-lg shadown-lg px-10 py-5 flex flex-col items-center gap-5">
+                            {/* Schema details  */}
+                            <div className="w-full flex items-center justify-between">
+                                <h3 className="flex items-center gap-2 text-lg font-bold"><Table color="#8f118f" /> order_items</h3>
+                                <h4 className="text-sm px-3 py-2 rounded-md border-1 border-gray-200 bg-gray-50">5938 documents</h4>
+                            </div>
+
+                            {/* Schema  */}
+                            <div className="w-7/8 px-10 py-5">
+                                <table className="table-auto border-collapse border-spacing-y-4 w-full">
+                                    <thead>
+                                        <tr>
+                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Columns</th>
+                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Type</th>
+                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Property</th>
+                                            <th className="text-lg px-6 pt-4 pb-2 text-center font-semibold border-b-2 border-gray-300">Indexed</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">id</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UUID</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">PRIMAY KEY</td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">order_id</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UUID</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">FOREIGN KEY</td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">product_id</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">UUID</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">FOREIGN KEY</td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-purple-100 border-1 border-purple-300 rounded-lg">Indexed</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">quantity</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">INTEGER</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">NOT NULL</td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-gray-100 border-1 border-gray-300 rounded-lg">Not Indexed</p></td>
+                                        </tr>
+                                        <tr>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">total_price</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">DECIMAL(10,2)</td>
+                                            <td className="text-md text-gray-500 px-6 pt-4 pb-2 text-center border-b-2 border-gray-300">NOT NULL, DEAFULT(0)</td>
+                                            <td className="text-md text-black px-6 pt-4 pb-2 text-center border-b-2 border-gray-300"><p className="p-1 bg-gray-100 border-1 border-gray-300 rounded-lg">Not Indexed</p></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
                         </div>
 
