@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer utilities {
+    .text-gradient-purple {
+        background-image: linear-gradient(to right, #5217da, #622ddf, #7043da, #7f54e5, #7a4be6, #7043da, #5217da);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .bg-gradient-purple {
+        background: linear-gradient(to right, #5217da, #622ddf, #7043da, #7f54e5, #7a4be6, #7043da, #5217da);
+    }
+}
